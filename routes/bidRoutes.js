@@ -32,7 +32,8 @@ router.get("/leaderboard", async (req, res) => {
         $group: {
           _id: "$phone",
           name: { $first: "$name" },
-          amount: { $first: "$amount" }
+          phone: { $first: "$phone" }, // <-- Add this line
+          amount: { $first: "$amount" },
         }
       },
       { $sort: { amount: -1 } }
